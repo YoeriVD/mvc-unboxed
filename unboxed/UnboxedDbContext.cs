@@ -12,6 +12,9 @@ namespace unboxed
     {
         public IDbSet<Survey> Surveys { get; set; }
 
+        public UnboxedDbContext() : base("DefaultConnection"){
+
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
