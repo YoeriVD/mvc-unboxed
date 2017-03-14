@@ -10,9 +10,6 @@
 
 <div>
     <ul>
-        @foreach (var setting in System.Configuration.ConfigurationManager.ConnectionStrings.Cast<ConnectionStringSettings>())
-        {
-            <li>@setting.Name: @setting.ConnectionString</li>
-        }
+       
     </ul>
 </div>
