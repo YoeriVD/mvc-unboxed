@@ -11,6 +11,14 @@ namespace unboxed
     public class UnboxedDbContext : DbContext
     {
         public IDbSet<Survey> Surveys { get; set; }
+
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder
+                .Properties<string>()
+                .Configure(s => s.HasMaxLength(255)); //als je dit niet doet, is elke string standaard NVARCHAR(MAX) => performance hits everywhere!
+        }
     }
 
     public abstract class Entity
@@ -27,5 +35,6 @@ namespace unboxed
 
     public class Survey : Entity
     {
+        public string Title { get; set; }
     }
 }

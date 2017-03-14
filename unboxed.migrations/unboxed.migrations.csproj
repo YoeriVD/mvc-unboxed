@@ -53,6 +53,10 @@
     <Compile Include="Migrations\201703141906063_FirstMigration.Designer.cs">
       <DependentUpon>201703141906063_FirstMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703141932342_SurveyTitle.cs" />
+    <Compile Include="Migrations\201703141932342_SurveyTitle.Designer.cs">
+      <DependentUpon>201703141932342_SurveyTitle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -69,6 +73,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201703141906063_FirstMigration.resx">
       <DependentUpon>201703141906063_FirstMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703141932342_SurveyTitle.resx">
+      <DependentUpon>201703141932342_SurveyTitle.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
