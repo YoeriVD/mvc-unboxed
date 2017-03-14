@@ -5,7 +5,7 @@ namespace unboxed.migrations.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<unboxed.UnboxedDbContext>
+    public sealed class Configuration : DbMigrationsConfiguration<unboxed.UnboxedDbContext>
     {
         public Configuration()
         {
@@ -14,7 +14,7 @@ namespace unboxed.migrations.Migrations
 
         protected override void Seed(unboxed.UnboxedDbContext context)
         {
-            if (!context.Surveys.Any()) return;
+            if (context.Surveys.Any()) return;
             context.Surveys.Add(new Survey()
             {
                 Title = "My first survey"
