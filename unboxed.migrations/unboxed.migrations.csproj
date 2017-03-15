@@ -58,6 +58,10 @@
     <Compile Include="Migrations\201703141932342_SurveyTitle.Designer.cs">
       <DependentUpon>201703141932342_SurveyTitle.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703152045008_SurveyWithQuestionsAndNewSchemas.cs" />
+    <Compile Include="Migrations\201703152045008_SurveyWithQuestionsAndNewSchemas.Designer.cs">
+      <DependentUpon>201703152045008_SurveyWithQuestionsAndNewSchemas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -77,6 +81,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703141932342_SurveyTitle.resx">
       <DependentUpon>201703141932342_SurveyTitle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703152045008_SurveyWithQuestionsAndNewSchemas.resx">
+      <DependentUpon>201703152045008_SurveyWithQuestionsAndNewSchemas.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

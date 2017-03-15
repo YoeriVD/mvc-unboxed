@@ -1,3 +1,6 @@
+using unboxed.Definition;
+using unboxed.TestData;
+
 namespace unboxed.migrations.Migrations
 {
     using System;
@@ -15,10 +18,7 @@ namespace unboxed.migrations.Migrations
         protected override void Seed(unboxed.UnboxedDbContext context)
         {
             if (context.Surveys.Any()) return;
-            context.Surveys.Add(new Survey()
-            {
-                Title = "My first survey"
-            });
+            context.Surveys.Add(TestDataFactory.GetSurveyWithPredefinedQuestions());
             context.SaveChanges();
         }
     }
