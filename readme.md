@@ -18,6 +18,7 @@
 1. EntityFramework toevoegen aan alle projecten
 1. Nieuwe klasse aanmaken `{Naam}DbContext.cs` en overerven van `DbContext`
 1. `View` -> `Other Windows`-> `Package Manager Console`
+    + het migrations project selecteren in de dropdown
     + volgend commando uitvoeren: 
     ```
     enable-migrations -ContextProjectName unboxed -StartUpProjectName unboxed.web
