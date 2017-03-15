@@ -258,11 +258,11 @@
     <Content Include="Views\Shared\DisplayTemplates\PanelModel.cshtml" />
     <Content Include="T4MVC.tt.hooks.t4" />
     <Content Include="Views\Survey\Index.cshtml" />
+    <Content Include="Views\MultipleChoice\Index.cshtml" />
+    <Content Include="Views\YesNo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\MultipleChoice\" />
-    <Folder Include="Views\YesNo\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using unboxed.Execution;
+using unboxed.Infrastructure.ServiceLayer;
 using unboxed.web.Models;
 
 namespace unboxed.web.Controllers
@@ -11,10 +12,12 @@ namespace unboxed.web.Controllers
     public partial class SurveyController : Controller
     {
         private readonly UnboxedDbContext _db;
+        private readonly IRequestDispatcher _dispatcher;
 
         public SurveyController()
         {
             _db = new UnboxedDbContext();
+            _dispatcher = new DefaultRequestDispatcher();
         }
 
         // GET: Survey
@@ -30,7 +33,7 @@ namespace unboxed.web.Controllers
             {
                 Title = s.BasedOn.Title,
                 Body =
-                    $"{s.QuestionInstances.Count(q => q.State == QuestionState.NotAsked)} vragen van de {s.QuestionInstances.Count} vragen beantwoord.",
+                    $"{s.QuestionInstances.Count(q => q.State == QuestionState.Answered)} vragen van de {s.QuestionInstances.Count} vragen beantwoord.",
                 ButtonText = "Hervatten",
                 ButtonTarget = MVC.Survey.Resume(s.ExternalId)
             })
@@ -42,37 +45,24 @@ namespace unboxed.web.Controllers
 
         public virtual async Task<ActionResult> Start(Guid id)
         {
-            var survey = await _db.Surveys.FirstOrDefaultAsync(s => s.ExternalId == id);
 
-            var newInstance = new SurveyInstance()
+            var response = await _dispatcher.Execute<CreateSurveyInstanceRequest, CreateSurveyInstanceResponse>(new CreateSurveyInstanceRequest()
             {
-                BasedOn = survey
-            };
+                SurveyId = id
+            });
 
-            survey.Questions.OrderBy(q => q.Id).Select(q => new QuestionInstance
-                {
-                    State = QuestionState.NotAsked,
-                    Question = q
-                })
-                .ToList()
-                .ForEach(q => newInstance.QuestionInstances.Add(q));
-
-
-            _db.SurveyInstances.Add(newInstance);
-            await _db.SaveChangesAsync();
-            return RedirectToAction(MVC.Survey.Resume(newInstance.ExternalId));
+            return RedirectToAction(MVC.Survey.Resume(response.SurveyInstanceId));
         }
 
         public virtual async Task<ActionResult> Resume(Guid id)
         {
-            var survey = await _db.SurveyInstances.FirstOrDefaultAsync(s => s.ExternalId == id);
-            var nextQuestion = survey
-                .QuestionInstances
-                .Where(q => q.State != QuestionState.Answered)
-                .OrderBy(q => q.Id).FirstOrDefault();
-            if (nextQuestion == null) return RedirectToAction(MVC.Survey.Index(survey.BasedOn.ExternalId));
-            var controllerName = nextQuestion.Question.QuestionType;
-            return RedirectToAction("Index", controllerName, new {id = nextQuestion.ExternalId});
+            var response = await _dispatcher.Execute<GetNextQuestionRequest, GetNextQuestionResponse>(new GetNextQuestionRequest()
+            {
+                SurveyInstanceId = id
+            });
+            if (response.NextQuestion == null) return RedirectToAction(MVC.Survey.Index(response.SurveyId));
+            var controllerName = response.NextQuestion.Question.QuestionType;
+            return RedirectToAction("Index", controllerName, new {id = response.NextQuestion.ExternalId});
         }
     }
 }

@@ -53,6 +53,8 @@
     <Compile Include="Definition\Answer.cs" />
     <Compile Include="Definition\Questions\MultipleChoice.cs" />
     <Compile Include="Definition\Questions\QuestionBase.cs" />
+    <Compile Include="Execution\CreateSurveyInstance.cs" />
+    <Compile Include="Execution\GetNextQuestion.cs" />
     <Compile Include="Execution\QuestionState.cs" />
     <Compile Include="Definition\Questions\YesNoQuestion.cs" />
     <Compile Include="Execution\SurveyInstance.cs" />
