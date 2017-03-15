@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using unboxed.Definition;
+using unboxed.Definition.Questions;
 using unboxed.Infrastructure;
 
 namespace unboxed.Execution
@@ -13,7 +14,7 @@ namespace unboxed.Execution
             QuestionInstances = new List<QuestionInstance>();
         }
 
-        public Survey BasedOn { get; set; }
+        public virtual Survey BasedOn { get; set; }
         public virtual ICollection<QuestionInstance> QuestionInstances { get; set; }
     }
 
@@ -21,5 +22,6 @@ namespace unboxed.Execution
     public class QuestionInstance : Entity
     {
         public QuestionState State { get; set; } = QuestionState.NotAsked;
+        public virtual QuestionBase Question { get; set; }
     }
 }

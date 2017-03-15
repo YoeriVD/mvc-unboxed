@@ -1,0 +1,12 @@
+﻿@model IEnumerable<unboxed.web.Models.PanelModel>
+    
+
+@{
+    var surveyId = Guid.Parse(this.Request.RequestContext.RouteData.Values["id"].ToString());
+}
+
+
+@Html.ActionLink("Nieuwe starten", MVC.Survey.Start(surveyId), new {@class="btn btn-default"})
+<div class="jumbotron">
+    @Html.DisplayForModel()
+</div>

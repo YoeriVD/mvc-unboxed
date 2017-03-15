@@ -25,13 +25,13 @@ using System.Web.Routing;
 using T4MVC;
 namespace unboxed.web.Controllers
 {
-    public partial class HomeController
+    public partial class MultipleChoiceController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public HomeController() { }
+        public MultipleChoiceController() { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected HomeController(Dummy d) { }
+        protected MultipleChoiceController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected RedirectToRouteResult RedirectToAction(ActionResult result)
@@ -61,13 +61,13 @@ namespace unboxed.web.Controllers
 
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public HomeController Actions { get { return MVC.Home; } }
+        public MultipleChoiceController Actions { get { return MVC.MultipleChoice; } }
         [GeneratedCode("T4MVC", "2.0")]
         public readonly string Area = "";
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Name = "Home";
+        public readonly string Name = "MultipleChoice";
         [GeneratedCode("T4MVC", "2.0")]
-        public const string NameConst = "Home";
+        public const string NameConst = "MultipleChoice";
         [GeneratedCode("T4MVC", "2.0")]
         static readonly ActionNamesClass s_actions = new ActionNamesClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -76,16 +76,12 @@ namespace unboxed.web.Controllers
         public class ActionNamesClass
         {
             public readonly string Index = "Index";
-            public readonly string About = "About";
-            public readonly string Contact = "Contact";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
             public const string Index = "Index";
-            public const string About = "About";
-            public const string Contact = "Contact";
         }
 
 
@@ -99,47 +95,23 @@ namespace unboxed.web.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
-                public readonly string Index = "Index";
             }
-            public readonly string Index = "~/Views/Home/Index.cshtml";
         }
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public partial class T4MVC_HomeController : unboxed.web.Controllers.HomeController
+    public partial class T4MVC_MultipleChoiceController : unboxed.web.Controllers.MultipleChoiceController
     {
-        public T4MVC_HomeController() : base(Dummy.Instance) { }
+        public T4MVC_MultipleChoiceController() : base(Dummy.Instance) { }
 
         [NonAction]
         partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
 
         [NonAction]
-        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> Index()
+        public override System.Web.Mvc.ActionResult Index()
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
             IndexOverride(callInfo);
-            return System.Threading.Tasks.Task.FromResult(callInfo as System.Web.Mvc.ActionResult);
-        }
-
-        [NonAction]
-        partial void AboutOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult About()
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.About);
-            AboutOverride(callInfo);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void ContactOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult Contact()
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Contact);
-            ContactOverride(callInfo);
             return callInfo;
         }
 

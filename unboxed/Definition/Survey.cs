@@ -14,6 +14,6 @@ namespace unboxed.Definition
         }
 
         public string Title { get; set; } = "Survey";
-        public ICollection<QuestionBase> Questions { get; set; }
+        public virtual ICollection<QuestionBase> Questions { get; set; }
     }
 }

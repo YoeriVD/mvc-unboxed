@@ -7,5 +7,10 @@ namespace unboxed.Definition.Questions
     public class MultipleChoice : QuestionBase
     {
         public virtual ICollection<Answer> PossibleAnswers { get; set; }
+
+        public MultipleChoice()
+        {
+            base.QuestionType = "MultipleChoice";
+        }
     }
 }

@@ -28,6 +28,9 @@ using T4MVC;
 public static partial class MVC
 {
     public static unboxed.web.Controllers.HomeController Home = new unboxed.web.Controllers.T4MVC_HomeController();
+    public static unboxed.web.Controllers.MultipleChoiceController MultipleChoice = new unboxed.web.Controllers.T4MVC_MultipleChoiceController();
+    public static unboxed.web.Controllers.SurveyController Survey = new unboxed.web.Controllers.T4MVC_SurveyController();
+    public static unboxed.web.Controllers.YesNoController YesNo = new unboxed.web.Controllers.T4MVC_YesNoController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
 

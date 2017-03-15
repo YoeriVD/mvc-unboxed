@@ -1,11 +1,11 @@
-﻿@model unboxed.Definition.Survey
+﻿@model unboxed.web.Models.PanelModel
 <div class="panel panel-info">
     <div class="panel-heading"> @Model.Title </div>
     <div class="panel-body">
-        here be awesome status description
+        @Model.Body
     </div>
     <div class="panel-footer">
-        <a class="btn btn-primary pull-right">resume</a>
+        @Html.ActionLink(Model.ButtonText, Model.ButtonTarget, new {@class = "btn btn-primary pull-right" })
         <div class="clearfix"></div>
     </div>
 </div>

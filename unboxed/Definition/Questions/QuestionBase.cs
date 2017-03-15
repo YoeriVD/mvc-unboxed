@@ -8,5 +8,7 @@ namespace unboxed.Definition.Questions
     public abstract class QuestionBase : Entity
     {
         public string QuestionText { get; set; }
+        [NotMapped]
+        public string QuestionType { get; set; }
     }
 }

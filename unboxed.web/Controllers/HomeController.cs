@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using unboxed.web.Models;
 
 namespace unboxed.web.Controllers
 {
@@ -14,7 +15,17 @@ namespace unboxed.web.Controllers
         {
             var db = new UnboxedDbContext();
 
-            var model = await db.Surveys.AsNoTracking().ToListAsync();
+            var surveys = await db.Surveys
+                .AsNoTracking()
+                .ToListAsync();
+            var model = surveys.Select(s => new PanelModel()
+            {
+                Title = s.Title,
+                Body = "Some random awesome description",
+                ButtonText = "Resume",
+                ButtonTarget = MVC.Survey.Index(s.ExternalId)
+            });
+
             return View(model);
         }
 

@@ -39,14 +39,15 @@ namespace T4MVC
             public class _ViewNamesClass
             {
                 public readonly string _Layout = "_Layout";
-                public readonly string _LoginPartial = "_LoginPartial";
-                public readonly string Error = "Error";
-                public readonly string Lockout = "Lockout";
             }
             public readonly string _Layout = "~/Views/Shared/_Layout.cshtml";
-            public readonly string _LoginPartial = "~/Views/Shared/_LoginPartial.cshtml";
-            public readonly string Error = "~/Views/Shared/Error.cshtml";
-            public readonly string Lockout = "~/Views/Shared/Lockout.cshtml";
+            static readonly _DisplayTemplatesClass s_DisplayTemplates = new _DisplayTemplatesClass();
+            public _DisplayTemplatesClass DisplayTemplates { get { return s_DisplayTemplates; } }
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public partial class _DisplayTemplatesClass
+            {
+                public readonly string PanelDto = "PanelModel";
+            }
         }
     }
 
