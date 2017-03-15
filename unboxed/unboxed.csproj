@@ -53,7 +53,9 @@
     <Compile Include="Definition\Answer.cs" />
     <Compile Include="Definition\Questions\MultipleChoice.cs" />
     <Compile Include="Definition\Questions\QuestionBase.cs" />
+    <Compile Include="Execution\QuestionState.cs" />
     <Compile Include="Definition\Questions\YesNoQuestion.cs" />
+    <Compile Include="Execution\SurveyInstance.cs" />
     <Compile Include="Infrastructure\Entity.cs" />
     <Compile Include="Infrastructure\ServiceLayer\RequestDispatcher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
 
 namespace unboxed.Definition.Questions
 {
@@ -8,11 +7,5 @@ namespace unboxed.Definition.Questions
     public class MultipleChoice : QuestionBase
     {
         public virtual ICollection<Answer> PossibleAnswers { get; set; }
-        public virtual ICollection<Answer> ChosenAnswers { get; set; }
-
-        public override IEnumerable<Answer> GetAnswers()
-        {
-            return ChosenAnswers.ToList();
-        }
     }
 }

@@ -3,19 +3,37 @@ namespace unboxed.migrations.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class SurveyWithQuestionsAndNewSchemas : DbMigration
+    public partial class NewInitialDesign : DbMigration
     {
         public override void Up()
         {
-            Sql("truncate table dbo.Surveys");
-            RenameTable(name: "dbo.Surveys", newName: "Survey");
-            MoveTable(name: "dbo.Survey", newSchema: "Definition");
+            CreateTable(
+                "Execution.Survey",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        ExternalId = c.Guid(nullable: false),
+                        BasedOn_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("Definition.Survey", t => t.BasedOn_Id)
+                .Index(t => t.BasedOn_Id);
+            
+            CreateTable(
+                "Definition.Survey",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Title = c.String(maxLength: 255),
+                        ExternalId = c.Guid(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
             CreateTable(
                 "Definition.Questions",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        State = c.Int(nullable: false),
                         QuestionText = c.String(maxLength: 255),
                         ExternalId = c.Guid(nullable: false),
                         Survey_Id = c.Int(),
@@ -33,13 +51,23 @@ namespace unboxed.migrations.Migrations
                         Score = c.Int(nullable: false),
                         ExternalId = c.Guid(nullable: false),
                         MultipleChoice_Id = c.Int(),
-                        MultipleChoice_Id1 = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("Definition.MultipleChoice", t => t.MultipleChoice_Id)
-                .ForeignKey("Definition.MultipleChoice", t => t.MultipleChoice_Id1)
-                .Index(t => t.MultipleChoice_Id)
-                .Index(t => t.MultipleChoice_Id1);
+                .Index(t => t.MultipleChoice_Id);
+            
+            CreateTable(
+                "Execution.Question",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        State = c.Int(nullable: false),
+                        ExternalId = c.Guid(nullable: false),
+                        SurveyInstance_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("Execution.Survey", t => t.SurveyInstance_Id)
+                .Index(t => t.SurveyInstance_Id);
             
             CreateTable(
                 "Definition.MultipleChoice",
@@ -58,7 +86,6 @@ namespace unboxed.migrations.Migrations
                         Id = c.Int(nullable: false),
                         NegativeAnswer_Id = c.Int(),
                         PositiveAnswer_Id = c.Int(),
-                        Answer = c.Boolean(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("Definition.Questions", t => t.Id)
@@ -76,22 +103,25 @@ namespace unboxed.migrations.Migrations
             DropForeignKey("Definition.YesNo", "NegativeAnswer_Id", "Definition.Answers");
             DropForeignKey("Definition.YesNo", "Id", "Definition.Questions");
             DropForeignKey("Definition.MultipleChoice", "Id", "Definition.Questions");
+            DropForeignKey("Execution.Question", "SurveyInstance_Id", "Execution.Survey");
+            DropForeignKey("Execution.Survey", "BasedOn_Id", "Definition.Survey");
             DropForeignKey("Definition.Questions", "Survey_Id", "Definition.Survey");
-            DropForeignKey("Definition.Answers", "MultipleChoice_Id1", "Definition.MultipleChoice");
             DropForeignKey("Definition.Answers", "MultipleChoice_Id", "Definition.MultipleChoice");
             DropIndex("Definition.YesNo", new[] { "PositiveAnswer_Id" });
             DropIndex("Definition.YesNo", new[] { "NegativeAnswer_Id" });
             DropIndex("Definition.YesNo", new[] { "Id" });
             DropIndex("Definition.MultipleChoice", new[] { "Id" });
-            DropIndex("Definition.Answers", new[] { "MultipleChoice_Id1" });
+            DropIndex("Execution.Question", new[] { "SurveyInstance_Id" });
             DropIndex("Definition.Answers", new[] { "MultipleChoice_Id" });
             DropIndex("Definition.Questions", new[] { "Survey_Id" });
+            DropIndex("Execution.Survey", new[] { "BasedOn_Id" });
             DropTable("Definition.YesNo");
             DropTable("Definition.MultipleChoice");
+            DropTable("Execution.Question");
             DropTable("Definition.Answers");
             DropTable("Definition.Questions");
-            MoveTable(name: "Definition.Survey", newSchema: "dbo");
-            RenameTable(name: "dbo.Survey", newName: "Surveys");
+            DropTable("Definition.Survey");
+            DropTable("Execution.Survey");
         }
     }
 }

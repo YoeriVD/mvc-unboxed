@@ -50,17 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201703141906063_FirstMigration.cs" />
-    <Compile Include="Migrations\201703141906063_FirstMigration.Designer.cs">
-      <DependentUpon>201703141906063_FirstMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703141932342_SurveyTitle.cs" />
-    <Compile Include="Migrations\201703141932342_SurveyTitle.Designer.cs">
-      <DependentUpon>201703141932342_SurveyTitle.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703152045008_SurveyWithQuestionsAndNewSchemas.cs" />
-    <Compile Include="Migrations\201703152045008_SurveyWithQuestionsAndNewSchemas.Designer.cs">
-      <DependentUpon>201703152045008_SurveyWithQuestionsAndNewSchemas.cs</DependentUpon>
+    <Compile Include="Migrations\201703152118328_NewInitialDesign.cs" />
+    <Compile Include="Migrations\201703152118328_NewInitialDesign.Designer.cs">
+      <DependentUpon>201703152118328_NewInitialDesign.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -76,14 +68,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201703141906063_FirstMigration.resx">
-      <DependentUpon>201703141906063_FirstMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703141932342_SurveyTitle.resx">
-      <DependentUpon>201703141932342_SurveyTitle.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703152045008_SurveyWithQuestionsAndNewSchemas.resx">
-      <DependentUpon>201703152045008_SurveyWithQuestionsAndNewSchemas.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703152118328_NewInitialDesign.resx">
+      <DependentUpon>201703152118328_NewInitialDesign.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
