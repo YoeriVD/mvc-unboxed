@@ -1,5 +1,24 @@
 ﻿using System.Web;
 using System.Web.Optimization;
+using Links;
+
+
+namespace Links
+{
+    public static partial class Bundles
+    {
+        public static partial class Scripts
+        {
+            public static readonly string jquery = "~/scripts/jquery";
+            public static readonly string jqueryvalidate = "~/scripts/jqueryvalidate";
+            public static readonly string bootstrap = "~/scripts/bootstrap";
+        }
+        public static partial class Styles
+        {
+            public static readonly string bootstrap = "~/styles/bootstrap";
+        }
+    }
+}
 
 namespace unboxed.web
 {
@@ -8,22 +27,18 @@ namespace unboxed.web
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+            bundles.Add(new ScriptBundle(Bundles.Scripts.jquery).Include(
                         "~/Scripts/jquery-{version}.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
+            bundles.Add(new ScriptBundle(Bundles.Scripts.jqueryvalidate).Include(
                         "~/Scripts/jquery.validate*"));
 
-            // Use the development version of Modernizr to develop with and learn from. Then, when you're
-            // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
-            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+            bundles.Add(new ScriptBundle(Links.Bundles.Scripts.bootstrap).Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
+            bundles.Add(new StyleBundle(Links.Bundles.Styles.bootstrap).Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
         }

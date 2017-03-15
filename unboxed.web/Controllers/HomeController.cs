@@ -8,9 +8,9 @@ using System.Web.Mvc;
 
 namespace unboxed.web.Controllers
 {
-    public class HomeController : Controller
+    public partial class HomeController : Controller
     {
-        public async Task<ActionResult> Index()
+        public virtual async Task<ActionResult> Index()
         {
             var db = new UnboxedDbContext();
 
@@ -18,14 +18,14 @@ namespace unboxed.web.Controllers
             return View(model);
         }
 
-        public ActionResult About()
+        public virtual ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
 
-        public ActionResult Contact()
+        public virtual ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
 
