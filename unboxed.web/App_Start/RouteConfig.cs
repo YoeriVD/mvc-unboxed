@@ -15,8 +15,8 @@ namespace unboxed.web
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                url: "{controller}/{action}/{id}/{questionId}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional, questionId = UrlParameter.Optional }
             );
         }
     }

@@ -1,9 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
-using Links;
 
-
-namespace Links
+namespace unboxed.web
 {
     public static partial class Bundles
     {
@@ -18,29 +16,26 @@ namespace Links
             public static readonly string bootstrap = "~/styles/bootstrap";
         }
     }
-}
 
-namespace unboxed.web
-{
     public class BundleConfig
     {
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle(Bundles.Scripts.jquery).Include(
-                        "~/Scripts/jquery-{version}.js"));
+                "~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle(Bundles.Scripts.jqueryvalidate).Include(
-                        "~/Scripts/jquery.validate*"));
+                "~/Scripts/jquery.validate*"));
 
 
-            bundles.Add(new ScriptBundle(Links.Bundles.Scripts.bootstrap).Include(
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+            bundles.Add(new ScriptBundle(Bundles.Scripts.bootstrap).Include(
+                "~/Scripts/bootstrap.js",
+                "~/Scripts/respond.js"));
 
-            bundles.Add(new StyleBundle(Links.Bundles.Styles.bootstrap).Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+            bundles.Add(new StyleBundle(Bundles.Styles.bootstrap).Include(
+                "~/Content/bootstrap.css",
+                "~/Content/site.css"));
         }
     }
 }

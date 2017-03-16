@@ -1,0 +1,11 @@
+﻿@model unboxed.web.Models.Forms.LookupViewModel
+    
+
+<div>
+    <select id="@Html.IdFor(m => m.Value)" name="@Html.NameFor(m => m.Value)" class="form-control">
+        @foreach (var val in Model.PossibleValues)
+        {
+            <option value="@val.Key" @(string.Equals(Model.Value, val.Key, StringComparison.OrdinalIgnoreCase) ? "selected" : string.Empty)>@val.Description</option>
+        }
+    </select>
+</div>

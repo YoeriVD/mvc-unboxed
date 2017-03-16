@@ -171,9 +171,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Models\Forms\LookupItem.cs" />
+    <Compile Include="Models\Forms\LookupViewModel.cs" />
     <Compile Include="Controllers\MultipleChoiceController.cs" />
     <Compile Include="Controllers\SurveyController.cs" />
     <Compile Include="Controllers\YesNoController.cs" />
+    <Compile Include="Models\SimpleQuestionFormViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -262,6 +265,7 @@
     <Content Include="Views\Survey\Index.cshtml" />
     <Content Include="Views\MultipleChoice\Index.cshtml" />
     <Content Include="Views\YesNo\Index.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\LookupViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

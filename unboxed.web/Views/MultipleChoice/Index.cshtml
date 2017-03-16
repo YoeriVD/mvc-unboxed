@@ -1,1 +1,17 @@
-﻿here be multiple choice
+﻿@model unboxed.web.Models.SimpleQuestionFormViewModel
+
+@{
+    var id = Guid.Parse(Request.RequestContext.RouteData.Values["id"].ToString());
+    var questionId = Guid.Parse(Request.RequestContext.RouteData.Values["questionId"].ToString());
+}
+
+
+<header>
+    <h1>@Model.Title</h1>
+    @using (Html.BeginForm(MVC.MultipleChoice.Index(id, questionId)))
+    {
+        @Html.EditorFor(m => m.Input)
+        <button type="submit" class="btn btn-primary">opslaan</button>
+    }
+
+</header>

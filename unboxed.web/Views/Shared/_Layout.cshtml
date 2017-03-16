@@ -1,10 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@using unboxed.web
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render(Links.Bundles.Styles.bootstrap)
+    @Styles.Render(Bundles.Styles.bootstrap)
 
 </head>
 <body>
@@ -33,8 +34,8 @@
         </footer>
     </div>
 
-    @Scripts.Render(Links.Bundles.Scripts.jquery)
-    @Scripts.Render(Links.Bundles.Scripts.bootstrap)
+    @Scripts.Render(Bundles.Scripts.jquery)
+    @Scripts.Render(Bundles.Scripts.bootstrap)
     @RenderSection("scripts", required: false)
 </body>
 </html>

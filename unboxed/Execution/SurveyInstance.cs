@@ -23,5 +23,6 @@ namespace unboxed.Execution
     {
         public QuestionState State { get; set; } = QuestionState.NotAsked;
         public virtual QuestionBase Question { get; set; }
+        public string Answer { get; set; }
     }
 }

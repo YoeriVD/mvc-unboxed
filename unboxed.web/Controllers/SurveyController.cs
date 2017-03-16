@@ -65,7 +65,11 @@ namespace unboxed.web.Controllers
             });
             if (response.NextQuestion == null) return RedirectToAction(MVC.Survey.Index(response.SurveyId));
             var controllerName = response.NextQuestion.Question.QuestionType;
-            return RedirectToAction("Index", controllerName, new {id = response.NextQuestion.ExternalId});
+            return RedirectToAction("Index", controllerName, new
+            {
+                id = id,
+                questionId = response.NextQuestion.ExternalId
+            });
         }
     }
 }
