@@ -23,6 +23,7 @@ namespace unboxed.web.Controllers
 
         // GET: Survey
         //[TrackTime]
+        [SurveyExists]
         public virtual async Task<ActionResult> Index(Guid id)
         {
             var surveyInstances = await _db.SurveyInstances

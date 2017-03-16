@@ -180,6 +180,7 @@
     <Compile Include="HomeController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\SurveyExists.cs" />
     <Compile Include="Infrastructure\TrackTime.cs" />
     <Compile Include="Models\PanelModel.cs" />
     <Compile Include="Models\SurveyPageModel.cs" />
