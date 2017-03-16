@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using unboxed.Execution;
 using unboxed.Infrastructure.ServiceLayer;
+using unboxed.web.Infrastructure;
 using unboxed.web.Models;
 
 namespace unboxed.web.Controllers
@@ -21,6 +22,7 @@ namespace unboxed.web.Controllers
         }
 
         // GET: Survey
+        //[TrackTime]
         public virtual async Task<ActionResult> Index(Guid id)
         {
             var surveyInstances = await _db.SurveyInstances
