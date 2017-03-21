@@ -25,3 +25,6 @@
     ```
 1. Je eerste migration maken (nog steeds in Package manager console)
     + `Add-Migration MyFirstMigration`
+
+### Opmerking
++ T4MVC runt niet vanzelf :-) na een code aanpassing even rechterklik op `T4MVC.tt` en `Run custom tool` aanklikken.
