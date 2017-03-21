@@ -61,3 +61,8 @@
 #*.PDF   diff=astextplain
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
+
+# language detection for github
+unboxed.web/Scripts/* linguist-vendored
+unboxed.web/Content/* linguist-vendored
+unboxed.web/fonts/* linguist-vendored
